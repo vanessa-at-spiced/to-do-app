@@ -6,7 +6,11 @@
         "node": true
     },
     "plugins": ["react"],
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:storybook/recommended"
+    ],
     "parserOptions": {
         "sourceType": "module",
         "ecmaVersion": 2021
