@@ -11,6 +11,7 @@ const { hash, compare } = require("../helper/bc.js");
 
 // const { requireLoggedIn, requireNotSigned } = require("../middleware/authorization.js");
 const { authRouter } = require("./routers/auth-router.js");
+const { todosRouter } = require("./routers/todos-router.js");
 
 app.use(compression());
 
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 });
 
 app.use(authRouter);
+app.use(todosRouter);
 // ---------------------------------End Middleware-------------------------
 
 

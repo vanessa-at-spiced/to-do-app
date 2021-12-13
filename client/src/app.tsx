@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { Container, Navbar, Nav, Alert } from "react-bootstrap";
 import Todolist from "./todolist";
+import TodoItem from "./todoItem";
 
-export interface Props {
+export interface UserId {
     user?: number;
 }
 
-export default function App(props: Props) {
+export default function App(props: UserId) {
     console.log(props.user);
     return (
         <>
@@ -41,6 +42,9 @@ export default function App(props: Props) {
                     <div id="app">
                         <Route exact path="/todos">
                             <Todolist user={props.user} />
+                        </Route>
+                        <Route exact path="/todo/:id">
+                            <TodoItem />
                         </Route>
                     </div>
                 </Container>
