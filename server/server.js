@@ -6,7 +6,7 @@ const path = require("path");
 const cookieSession = require('cookie-session');
 
 const db = require("../helper/db.js");
-const { hash, compare } = require("../helper/bc.js");
+
 
 
 // const { requireLoggedIn, requireNotSigned } = require("../middleware/authorization.js");
