@@ -21,7 +21,7 @@ export default function App(props: UserId) {
                                 as={NavLink}
                                 exact
                             >
-                                todo
+                                todos
                             </Nav.Link>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
