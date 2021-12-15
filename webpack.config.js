@@ -59,3 +59,4 @@ module.exports = () => ({
         filename: 'bundle.css',
     })],
 });
+

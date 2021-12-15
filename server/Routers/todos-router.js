@@ -88,6 +88,17 @@ router.get("/delete/todo/:id", async (req, res) => {
 
 
 });
+router.get("/update/status/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const { rows } = await db.updateStatus(id);
+        console.log("updated", rows);
+        res.json(rows);
+    } catch (err) { console.log("/update/status/:id", err); }
+
+
+});
 
 
 module.exports.todosRouter = router;

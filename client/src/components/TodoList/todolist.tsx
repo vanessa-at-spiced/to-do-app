@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-// import { TodoItem } from "./todoItem";
+import { Button } from "../Button/Button";
+import "./todoList.css";
 
 //TYPE defines all but Objects. Often used for union types
 type Status = "open" | "done" | "discarded";
@@ -15,9 +16,6 @@ interface ToDo {
 
 export interface Props {
     user: number;
-}
-export interface Input {
-    text?: string;
 }
 
 export const App: React.FC<Props> = (props) => {
@@ -54,7 +52,7 @@ export const App: React.FC<Props> = (props) => {
             });
             const data = await res.json();
             console.log("addTodo second", data);
-            setTodoList((todoList) => [...todoList, data]);
+            setTodoList((todoList) => [data, ...todoList]);
             // setTitle("");
         } catch (err) {
             console.log("err in bio upload", err);
@@ -78,24 +76,34 @@ export const App: React.FC<Props> = (props) => {
                 console.log("/delete/todo/${id} ", err);
             });
     };
+    const updateStatus = (id: number) => {
+        fetch(`/update/status/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("item:", data);
+                //    const updatedList: ToDo[] = ;\
+                //    console.log("updte", updatedList);
+                setTodoList(
+                    todoList.map((item) => {
+                        if (item.id != id) {
+                            return item;
+                        } else {
+                            return {
+                                ...item,
+                                status: "done",
+                            };
+                        }
+                    })
+                );
+            })
+            .catch((err) => {
+                console.log("/delete/todo/${id} ", err);
+            });
+    };
 
     return (
         <>
             <div>
-                {todoList &&
-                    todoList.map((todo) => (
-                        <div key={todo.id}>
-                            <Link to={`/todo/${todo.id}`}>
-                                <h3>{todo.title}</h3>
-                            </Link>
-
-                            <button onClick={() => deleteTodo(todo.id)}>
-                                Delete
-                            </button>
-                            <button>done</button>
-                        </div>
-                    ))}
-
                 <div>
                     <input
                         onChange={(e) => setTitle(e.target.value)}
@@ -103,8 +111,42 @@ export const App: React.FC<Props> = (props) => {
                         name="text"
                         ref={inputRef}
                     />
-                    <button onClick={() => handleTodo()}>Add Todo</button>
+                    <Button
+                        onClick={() => handleTodo()}
+                        label="Add Todo"
+                        size="medium"
+                        action="add"
+                    ></Button>
                 </div>
+                {todoList &&
+                    todoList.map((todo) => (
+                        <div
+                            key={todo.id}
+                            className={
+                                "todo-item " +
+                                (todo.status == "done" ? "done" : "open")
+                            }
+                        >
+                            <Link to={`/todo/${todo.id}`}>
+                                <div className="todo-title">{todo.title}</div>
+                            </Link>
+                            <Button
+                                onClick={() => deleteTodo(todo.id)}
+                                label="Delete"
+                                size="medium"
+                                action="delete"
+                            ></Button>
+
+                            {todo.status == "open" && (
+                                <Button
+                                    onClick={() => updateStatus(todo.id)}
+                                    label="Done"
+                                    size="medium"
+                                    action="done"
+                                ></Button>
+                            )}
+                        </div>
+                    ))}
             </div>
         </>
     );

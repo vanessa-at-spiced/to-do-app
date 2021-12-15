@@ -14,7 +14,7 @@ export default function useAuthSubmit(url, values) {
         }).then(
             response => response.json()
         ).then(
-            data => data.success ? location.replace('/') : setError(true)
+            data => data.success ? location.replace('/todos') : setError(true)
         );
     }
 

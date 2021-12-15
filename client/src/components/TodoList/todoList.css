@@ -1,0 +1,21 @@
+.todo-item {
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.done {
+    border: 1px solid rgb(101, 187, 101);
+}
+.open {
+    border: 1px solid purple;
+}
+
+.todo-title {
+    font-size: 1.6rem;
+    color: rgb(39, 37, 35);
+}
+
+a {
+    color: rgb(39, 37, 35) !important;
+    text-decoration: none !important;
+}

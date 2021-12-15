@@ -34,7 +34,7 @@ export default function Login() {
                     <Stack direction="horizontal" gap={3}>
 
                         <Button variant="primary" type="submit" onClick={submit}>
-                            Submit
+                            Log in
                         </Button>
 
                         {/* </Col> */}
@@ -42,7 +42,7 @@ export default function Login() {
                         <Link to="/"><Button variant="primary">Click here to register</Button></Link>
                         {/* </Col>
                 <Col md={6}> */}
-                        <Link to="/password/reset"><Button variant="primary">Reset Password</Button></Link>
+
                     </Stack>
                 </Col>
             </Row>
