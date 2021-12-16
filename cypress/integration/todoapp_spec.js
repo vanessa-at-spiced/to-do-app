@@ -19,11 +19,11 @@ describe("todo", () => {
         cy.getCookie('session').should('exist');
 
         //add todo
-        const note = uuidv4();
-        cy.findByRole('textbox').type(`Feed Cat  ${note}`);
+        const note = uuidv4().splice(0, 5);
+        cy.findByRole('textbox').type(`Feed Cat-${note}`);
         cy.findByRole('button', { name: /add todo/i }).click();
 
-        cy.findByText(`Feed Cat  ${note}`).click();
+        cy.findByText(`Feed Cat-${note}`).click();
 
 
         cy.findByRole('button', { name: /add description/i }).click();
@@ -40,7 +40,7 @@ describe("todo", () => {
         //click on add todo
         // cy.get('.to-title').contains('add special xyz');
 
-        cy.get('.todo-item').contains(`Feed Cat  ${note}`);
+        // cy.get('.todo-item').contains(`Feed Cat ${note}`);
 
 
         //insert title and click add
