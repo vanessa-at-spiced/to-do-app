@@ -4,5 +4,5 @@ import '@testing-library/jest-dom/extend-expect';
 
 test("should render", () => {
     render(<Delete {...Delete.args} />);
-    expect(screen.getByRole("button")).toHaveTextContent(/fail/i);
+    expect(screen.getByRole("button")).toHaveTextContent(/delete/i);
 });
