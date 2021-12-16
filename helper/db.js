@@ -36,7 +36,7 @@ module.exports.updateTodo = (item_id, description) => {
     return db.query(q, params);
 };
 module.exports.updateStatus = (item_id) => {
-    const q = `UPDATE items SET status = 'done' WHERE items.id = $1 RETURNING items.status`;
+    const q = `UPDATE items SET status = 'done' WHERE items.id = $1 RETURNING *`;
     const params = [item_id];
     return db.query(q, params);
 };
@@ -67,7 +67,12 @@ module.exports.getUserId = (email) => {
 };
 
 module.exports.getTodos = (id) => {
-    const q = `SELECT id, title, status  FROM items WHERE user_id = $1 ORDER BY created_at DESC`;
+    const q = `SELECT id, title, status, created_at  FROM items WHERE user_id = $1 AND status = 'open' ORDER BY created_at DESC`;
+    const params = [id];
+    return db.query(q, params);
+};
+module.exports.getTodosDone = (id) => {
+    const q = `SELECT id, title, status, created_at  FROM items WHERE user_id = $1 AND status = 'done'  ORDER BY created_at DESC`;
     const params = [id];
     return db.query(q, params);
 };

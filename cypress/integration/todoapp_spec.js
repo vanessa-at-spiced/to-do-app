@@ -40,25 +40,13 @@ describe("todo", () => {
         //click on add todo
         // cy.get('.to-title').contains('add special xyz');
 
-        // cy.get('.todo-item').contains(`Feed Cat ${note}`);
+        // cy.get('.todo-item').contains(`Feed Cat-${note}`);
+
+        cy.get('.todo-item').contains(`Feed Cat-${note}`).parent().find('.done').click();
+        cy.wait(2000);
+
+        cy.get('.todo-item').contains(`Feed Cat-${note}`).closest('div').should('have.class', 'done');
 
 
-        //insert title and click add
-
-        //see todo list again
-
-        //click on title to editü to do
-
-        //see todoitem
-
-        //click add description
-
-        //see textarea and put in some text, click save
-
-        //go back to todo list
-
-        //click on done button
-
-
-    })
-})
+    });
+});

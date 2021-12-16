@@ -6,7 +6,7 @@
     cursor: pointer;
     display: inline-block;
     line-height: 1;
-    margin: 0 0.5rem;
+    margin-right: 0.5rem;
 }
 .add {
     color: white;
@@ -14,7 +14,8 @@
 }
 .delete {
     color: rgb(173, 20, 20);
-    background-color: transparent;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
 .todo-button--small {

@@ -10,10 +10,59 @@ router.get('/api/todos', function (req, res) {
 
     const user_id = req.session.userId;
 
-    db.getTodos(user_id).then((result) => {
-        console.log("rows /api/todos", result.rows);
+    db.getTodos(user_id).then(({ rows }) => {
+        console.log("rows /api/todos", rows);
 
-        return res.json(result.rows);
+        const results = rows.map(row => {
+            const date = new Date(row.created_at);
+
+            const formatedDate = new Intl.DateTimeFormat("en-GB", {
+                dateStyle: "long",
+                timeStyle: "short",
+            }).format(date);
+
+            return {
+                ...row,
+                created_at: formatedDate
+            };
+
+        });
+
+        return res.json(results);
+
+    }).catch((err) => {
+        console.log(err);
+        return res.status(err.status || 500).send({
+            error: {
+                status: err.status || 500,
+                // message: err.message || "Internal Server Error",
+            },
+        });
+    });
+});
+router.get('/api/todos/done', function (req, res) {
+
+    const user_id = req.session.userId;
+
+    db.getTodosDone(user_id).then(({ rows }) => {
+        console.log("rows /api/todos/done", rows);
+
+        const results = rows.map(row => {
+            const date = new Date(row.created_at);
+
+            const formatedDate = new Intl.DateTimeFormat("en-GB", {
+                dateStyle: "long",
+                timeStyle: "short",
+            }).format(date);
+
+            return {
+                ...row,
+                created_at: formatedDate
+            };
+
+        });
+
+        return res.json(results);
 
     }).catch((err) => {
         console.log(err);

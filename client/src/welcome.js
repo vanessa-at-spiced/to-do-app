@@ -30,7 +30,7 @@ export default function Welcome() {
 
 
                 <div id="welcome">
-
+                    <div className='h3-welcome'>Another ToDo</div>
 
                     <Route exact path="/">
                         <Registration />

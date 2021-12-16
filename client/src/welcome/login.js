@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Form, Button, Alert, Row, Col, Stack } from 'react-bootstrap';
+import { Form, Alert, Row, Col, Stack } from 'react-bootstrap';
 import useAuthSubmit from '../hooks/useAuthSubmit.js';
 import useForm from '../hooks/useForm.js';
+
+import { Button } from "../components/Button/Button";
 
 export default function Login() {
     const [values, handleChange] = useForm();
@@ -32,14 +34,24 @@ export default function Login() {
                         <Form.Check type="checkbox" label="I consent to your privacy policy" />
                     </Form.Group>
                     <Stack direction="horizontal" gap={3}>
-
-                        <Button variant="primary" type="submit" onClick={submit}>
+                        <Button
+                            onClick={submit}
+                            label="Log in"
+                            size="medium"
+                            action="login"
+                        ></Button>
+                        {/* <Button variant="primary" type="submit" onClick={submit}>
                             Log in
-                        </Button>
+                        </Button> */}
 
                         {/* </Col> */}
                         {/* <Col md={6}> */}
-                        <Link to="/"><Button variant="primary">Click here to register</Button></Link>
+                        <Link to="/">                        <Button
+
+                            label="Click here to register"
+                            size="medium"
+                            action="login"
+                        ></Button></Link>
                         {/* </Col>
                 <Col md={6}> */}
 

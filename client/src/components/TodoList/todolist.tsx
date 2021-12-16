@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Form, Row, Col } from "react-bootstrap";
+
 import { Button } from "../Button/Button";
 import "./todoList.css";
 
@@ -12,6 +14,7 @@ interface ToDo {
     title: string;
     description?: string;
     status: Status;
+    created_at: string;
 }
 
 export interface Props {
@@ -20,6 +23,7 @@ export interface Props {
 
 export const App: React.FC<Props> = (props) => {
     const [todoList, setTodoList] = useState<ToDo[]>([]);
+    const [todoListDone, setTodoListDone] = useState<ToDo[]>([]);
     const [title, setTitle] = useState<string>("");
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -30,6 +34,18 @@ export const App: React.FC<Props> = (props) => {
             .then((data) => {
                 console.log("first", data);
                 setTodoList(data);
+            })
+            .catch((err) => {
+                console.log("err in did mount", err);
+            });
+    }, []);
+
+    useEffect(() => {
+        fetch(`/api/todos/done`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("first", data);
+                setTodoListDone(data);
             })
             .catch((err) => {
                 console.log("err in did mount", err);
@@ -71,6 +87,13 @@ export const App: React.FC<Props> = (props) => {
                     console.log("new", newArray);
                     return newArray;
                 });
+                setTodoListDone((todoListDone) => {
+                    const newArray = todoListDone.filter(
+                        (item) => item.id != id
+                    );
+                    console.log("new", newArray);
+                    return newArray;
+                });
             })
             .catch((err) => {
                 console.log("/delete/todo/${id} ", err);
@@ -80,73 +103,161 @@ export const App: React.FC<Props> = (props) => {
         fetch(`/update/status/${id}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log("item:", data);
+                console.log("item:", data[0]);
                 //    const updatedList: ToDo[] = ;\
                 //    console.log("updte", updatedList);
-                setTodoList(
-                    todoList.map((item) => {
-                        if (item.id != id) {
-                            return item;
-                        } else {
-                            return {
-                                ...item,
-                                status: "done",
-                            };
-                        }
-                    })
-                );
+                setTodoList((todoList) => {
+                    const newArray = todoList.filter((item) => item.id != id);
+                    console.log("new", newArray);
+                    return newArray;
+                });
+                setTodoListDone([data[0], ...todoListDone]);
             })
             .catch((err) => {
                 console.log("/delete/todo/${id} ", err);
+            });
+
+        fetch(`/api/todos/done`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("first", data);
+                setTodoListDone(data);
+            })
+            .catch((err) => {
+                console.log("err in did mount", err);
             });
     };
 
     return (
         <>
             <div>
-                <div>
-                    <input
-                        onChange={(e) => setTitle(e.target.value)}
-                        // defaultValue={title}
-                        name="text"
-                        ref={inputRef}
-                    />
-                    <Button
-                        onClick={() => handleTodo()}
-                        label="Add Todo"
-                        size="medium"
-                        action="add"
-                    ></Button>
-                </div>
-                {todoList &&
-                    todoList.map((todo) => (
-                        <div
-                            key={todo.id}
-                            className={
-                                "todo-item " +
-                                (todo.status == "done" ? "done" : "open")
-                            }
-                        >
-                            <Link to={`/todo/${todo.id}`}>
-                                <div className="todo-title">{todo.title}</div>
-                            </Link>
+                <div className="section--add-todo">
+                    <Row>
+                        <Col md={6}>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="formBasicEmail"
+                            >
+                                <Form.Control
+                                    placeholder="Add your todo..."
+                                    name="text"
+                                    ref={inputRef}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col md={6}>
                             <Button
-                                onClick={() => deleteTodo(todo.id)}
-                                label="Delete"
+                                onClick={() => handleTodo()}
+                                label="Add Todo"
                                 size="medium"
-                                action="delete"
+                                action="add"
                             ></Button>
+                        </Col>
+                    </Row>
+                </div>
+                <Row>
+                    <Col md={8}>
+                        {todoList &&
+                            todoList.map((todo) => (
+                                <div
+                                    key={todo.id}
+                                    className={
+                                        "todo-item " +
+                                        (todo.status == "done"
+                                            ? "done"
+                                            : "open")
+                                    }
+                                >
+                                    <Link to={`/todo/${todo.id}`}>
+                                        <div className="todo-title">
+                                            {todo.title}
+                                        </div>
+                                    </Link>
 
-                            {todo.status == "open" && (
-                                <Button
-                                    onClick={() => updateStatus(todo.id)}
-                                    label="Done"
-                                    size="medium"
-                                    action="done"
-                                ></Button>
-                            )}
-                        </div>
-                    ))}
+                                    <Row>
+                                        <Col md={8}>
+                                            <Button
+                                                onClick={() =>
+                                                    deleteTodo(todo.id)
+                                                }
+                                                label="Delete"
+                                                size="medium"
+                                                action="delete"
+                                            ></Button>
+
+                                            {todo.status == "open" && (
+                                                <Button
+                                                    onClick={() =>
+                                                        updateStatus(todo.id)
+                                                    }
+                                                    label="Done"
+                                                    size="medium"
+                                                    action="done"
+                                                ></Button>
+                                            )}
+                                        </Col>
+                                        <Col md={4}>
+                                            <div className="todo-date align-text-bottom">
+                                                {todo.created_at}
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            ))}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={8}>
+                        {todoListDone &&
+                            todoListDone.map((todo) => (
+                                <div
+                                    key={todo.id}
+                                    className={
+                                        "todo-item " +
+                                        (todo.status == "done"
+                                            ? "done"
+                                            : "open")
+                                    }
+                                >
+                                    <Link to={`/todo/${todo.id}`}>
+                                        <div className="todo-title">
+                                            {todo.title}
+                                        </div>
+                                    </Link>
+
+                                    <Row>
+                                        <Col md={8}>
+                                            <Button
+                                                onClick={() =>
+                                                    deleteTodo(todo.id)
+                                                }
+                                                label="Delete"
+                                                size="medium"
+                                                action="delete"
+                                            ></Button>
+
+                                            {todo.status == "open" && (
+                                                <Button
+                                                    onClick={() =>
+                                                        updateStatus(todo.id)
+                                                    }
+                                                    label="Done"
+                                                    size="medium"
+                                                    action="done"
+                                                ></Button>
+                                            )}
+                                        </Col>
+                                        <Col md={4}>
+                                            <div className="todo-date align-text-bottom">
+                                                {todo.created_at}
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            ))}
+                    </Col>
+                </Row>
             </div>
         </>
     );
