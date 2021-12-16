@@ -19,7 +19,7 @@ describe("todo", () => {
         cy.getCookie('session').should('exist');
 
         //add todo
-        const note = uuidv4().splice(0, 5);
+        const note = uuidv4().slice(0, 5);
         cy.findByRole('textbox').type(`Feed Cat-${note}`);
         cy.findByRole('button', { name: /add todo/i }).click();
 
