@@ -21,7 +21,7 @@ export default function Login() {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" name="email" onChange={handleChange} />
-                        <Form.Text className="text-muted">
+                        <Form.Text className="text-small">
                             We'll never share your email with anyone else.
                         </Form.Text>
                     </Form.Group>
@@ -30,10 +30,10 @@ export default function Login() {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" name="password" onChange={handleChange} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="I consent to your privacy policy" />
-                    </Form.Group>
-                    <Stack direction="horizontal" gap={3}>
+                    </Form.Group> */}
+                    <Stack className='mt-5' direction="horizontal" gap={5}>
                         <Button
                             onClick={submit}
                             label="Log in"

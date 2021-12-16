@@ -2,21 +2,43 @@
     font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
     border: 0;
-    border-radius: 3em;
+    border-radius: 3px;
     cursor: pointer;
     display: inline-block;
     line-height: 1;
     margin-right: 0.5rem;
 }
 .add {
-    color: white;
-    background-color: #1ea7fd;
+    color: #fefbe9;
+    background-color: #f6c453;
+}
+.add:hover {
+    color: #fefbe9;
+    background-color: #f0a04b;
 }
 .delete {
-    color: rgb(173, 20, 20);
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+    background-color: #fefbe9;
+    color: #f0a04b;
+    border: 1px solid #f0a04b;
+
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; */
+}
+.delete:hover {
+    color: #fefbe9;
+    background-color: #f0a04b;
+    border: 1px solid #f0a04b;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset; */
+}
+
+.todo-button.done {
+    color: #fefbe9;
+    background-color: #f6c453;
+    border: 1px solid #f6c453;
+}
+.todo-button.done:hover {
+    color: #fefbe9;
+    background-color: #f0a04b;
+    border: 1px solid #f6c453;
 }
 .todo-button--small {
     font-size: 12px;
@@ -29,4 +51,14 @@
 .todo-button--large {
     font-size: 16px;
     padding: 12px 24px;
+}
+
+.login {
+    color: #fefbe9;
+    background-color: #f6c453;
+}
+
+.login:hover {
+    color: #fefbe9;
+    background-color: #f0a04b;
 }

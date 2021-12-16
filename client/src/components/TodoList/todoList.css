@@ -5,27 +5,31 @@
 .todo-item {
     padding: 1rem;
     margin: 1rem 0;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .todo-date {
     font-weight: 300;
     font-size: 0.75rem;
+    color: rgba(24, 58, 29, 0.7);
 }
 
 .done {
     border: 1px solid rgb(53, 97, 53);
-    background-color: rgb(101, 187, 101);
+    background-color: #d5ecce;
     color: white;
 }
 
 .open {
-    background-color: rgba(128, 0, 128, 0.2);
-    border: 1px solid #800080;
+    background-color: #fefbe9;
+    border: 3px solid rgb(250, 187, 81);
+    color: rgb(62, 142, 126);
 }
 
 .todo-title {
-    font-size: 1.6rem;
-    font-weight: 300;
-    color: rgba(39, 37, 35);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #183a1d !important;
     cursor: pointer;
     margin-bottom: 0.5rem;
 }
@@ -35,10 +39,10 @@
 }
 
 .done a {
-    color: white !important;
+    color: #183a1d !important;
     text-decoration: line-through;
 }
-a {
-    color: rgb(39, 37, 35) !important;
+.open a {
+    color: rgb(62, 142, 126) !important;
     text-decoration: none;
 }

@@ -11,23 +11,24 @@ export default function App(props: UserId) {
     console.log(props.user);
     return (
         <>
-            <BrowserRouter>
-                <Navbar bg="light" expand="lg">
-                    <Container>
-                        <Navbar.Brand>
-                            <Nav.Link
-                                key="/todos"
-                                to="/todos"
-                                as={NavLink}
-                                exact
-                            >
-                                todos
-                            </Nav.Link>
-                        </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="mx-auto">
-                                {/* <Nav.Link
+            <div className="bg-color">
+                <BrowserRouter>
+                    <Navbar expand="lg">
+                        <Container>
+                            <Navbar.Brand>
+                                <Nav.Link
+                                    key="/todos"
+                                    to="/todos"
+                                    as={NavLink}
+                                    className="active logo"
+                                >
+                                    MYL
+                                </Nav.Link>
+                            </Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="mx-auto">
+                                    {/* <Nav.Link
                                     key="/todos"
                                     to="/todos"
                                     as={NavLink}
@@ -36,24 +37,28 @@ export default function App(props: UserId) {
                                     List
                                 </Nav.Link> */}
 
-                                <a className="nav-link" href="/logout">
-                                    Logout
-                                </a>
-                            </Nav>
-                        </Navbar.Collapse>
+                                    <a
+                                        className="nav-link logout"
+                                        href="/logout"
+                                    >
+                                        Logout
+                                    </a>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
+                    <Container>
+                        <div id="app">
+                            <Route exact path="/todos">
+                                <Todolist user={props.user} />
+                            </Route>
+                            <Route exact path="/todo/:id">
+                                <TodoItem />
+                            </Route>
+                        </div>
                     </Container>
-                </Navbar>
-                <Container>
-                    <div id="app">
-                        <Route exact path="/todos">
-                            <Todolist user={props.user} />
-                        </Route>
-                        <Route exact path="/todo/:id">
-                            <TodoItem />
-                        </Route>
-                    </div>
-                </Container>
-            </BrowserRouter>
+                </BrowserRouter>
+            </div>
         </>
     );
 }

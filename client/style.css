@@ -8,12 +8,58 @@ body {
     background-color: ghostwhite;
 }
 
+.nav-link.logo {
+    color: #f6c453 !important;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.nav-link.logout {
+    color: #f6c453 !important;
+    margin-left: auto;
+}
+.navbar {
+    border-bottom: #f6c453 1px solid;
+}
+
+.navbar-dark .navbar-toggler {
+    color: #f6c453 !important;
+    border-color: #f6c453 !important;
+}
+
 .h3-welcome {
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
+    /* font-style: italic; */
     font-size: 3rem;
     margin: 3rem 0;
+    text-transform: uppercase;
+    color: #f6c453;
 }
 
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif; */
+.bg-color {
+    background: #183a1d;
+    background: linear-gradient(
+        120deg,
+        rgb(24, 58, 29) 45%,
+        rgba(24, 58, 29, 0.8) 100%
+    );
+    min-height: 100vh;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    color: #f6c453;
+}
+
+.text-small {
+    --bs-text-opacity: 1;
+    color: rgba(250, 237, 198, 0.5) !important;
+}
+.form-control {
+    background-color: #fefbe9 !important;
+}
