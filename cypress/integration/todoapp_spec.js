@@ -33,7 +33,7 @@ describe("todo", () => {
 
         cy.findByRole('button', { name: /save/i }).click();
 
-        cy.get('.description').contains('add special xyz');
+        cy.get('.description-detail').contains('add special xyz');
 
         cy.findByRole('button', { name: /back to list/i }).click();
 

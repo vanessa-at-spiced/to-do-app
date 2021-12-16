@@ -135,7 +135,7 @@ export const TodoItem: React.FC = () => {
 
                                 {!editorIsVisible && (
                                     <div className="container__description">
-                                        <p className="">
+                                        <p className="description-detail">
                                             {todoItem.description}
                                         </p>
                                     </div>
@@ -163,7 +163,7 @@ export const TodoItem: React.FC = () => {
                                 )}
                             </Col>
                         </Row>
-                        <Row className="mt-5">
+                        <Row className="mt-3">
                             <Col md={6}>
                                 {!editorIsVisible && todoItem.description && (
                                     <Button
