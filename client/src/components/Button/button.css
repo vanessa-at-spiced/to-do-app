@@ -53,12 +53,16 @@
     padding: 12px 24px;
 }
 
-.login {
+.login,
+.back-to-list,
+.description {
     color: #fefbe9;
     background-color: #f6c453;
 }
 
-.login:hover {
+.login:hover,
+.back-to-list:hover,
+.description:hover {
     color: #fefbe9;
     background-color: #f0a04b;
 }

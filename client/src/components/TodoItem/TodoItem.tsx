@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
+import { Container, Form, Row, Col } from "react-bootstrap";
 
 //TYPE defines all but Objects. Often used for union types
 type Status = "open" | "done" | "discarded";
@@ -111,82 +112,110 @@ export const TodoItem: React.FC = () => {
     return (
         <>
             {todoItem && (
-                <div>
-                    <Link to={`/todos`}>
-                        <Button
-                            label="Back to List"
-                            size="medium"
-                            action="back-to-list"
-                        ></Button>
-                    </Link>
-                    <div className="todo-item" key={todoItem.id}>
-                        <h3>{todoItem.title}</h3>
-                        {/* <p>{todoItem.description}</p> */}
+                <Container>
+                    <Row className="mt-5">
+                        <Col md={6}>
+                            <Link className="mt-5" to={`/todos`}>
+                                <Button
+                                    label="Back to List"
+                                    size="medium"
+                                    action="back-to-list"
+                                ></Button>
+                            </Link>
+                        </Col>
+                    </Row>
 
-                        {!editorIsVisible && (
-                            <div className="container__description">
-                                <p className="description">
-                                    {todoItem.description}
-                                </p>
-                            </div>
-                        )}
-                        {editorIsVisible && (
-                            <div className="todoEditor">
-                                <input
-                                    type="text"
-                                    onChange={(
-                                        e: React.ChangeEvent<HTMLInputElement>
-                                    ): void => changeDraftTodo(e)}
-                                    defaultValue={todoItem.description}
-                                />
-                            </div>
-                        )}
+                    <div className="todo-item-detail" key={todoItem.id}>
+                        <Row className="mt-5">
+                            <Col md={6}>
+                                <div className="todo-title-detail">
+                                    {todoItem.title} :
+                                </div>
+                                {/* <p>{todoItem.description}</p> */}
 
-                        {/* <div className="dist"></div> */}
+                                {!editorIsVisible && (
+                                    <div className="container__description">
+                                        <p className="">
+                                            {todoItem.description}
+                                        </p>
+                                    </div>
+                                )}
+                                {editorIsVisible && (
+                                    <div className="todoEditor">
+                                        <Form.Group
+                                            className="mb-3"
+                                            controlId="exampleForm.ControlTextarea1"
+                                        >
+                                            <Form.Control
+                                                className="board"
+                                                as="textarea"
+                                                rows={5}
+                                                cols={33}
+                                                onChange={(
+                                                    e: React.ChangeEvent<HTMLInputElement>
+                                                ): void => changeDraftTodo(e)}
+                                                defaultValue={
+                                                    todoItem.description
+                                                }
+                                            />
+                                        </Form.Group>
+                                    </div>
+                                )}
+                            </Col>
+                        </Row>
+                        <Row className="mt-5">
+                            <Col md={6}>
+                                {!editorIsVisible && todoItem.description && (
+                                    <Button
+                                        onClick={() => toggleArea()}
+                                        label="Edit description"
+                                        size="medium"
+                                        action="description"
+                                    ></Button>
+                                )}
 
-                        {!editorIsVisible && todoItem.description && (
-                            <Button
-                                onClick={() => toggleArea()}
-                                label="Edit description"
-                                size="medium"
-                                action="description-edit"
-                            ></Button>
-                        )}
+                                {!editorIsVisible && !todoItem.description && (
+                                    <Button
+                                        onClick={() => toggleArea()}
+                                        label="Add description"
+                                        size="medium"
+                                        action="description"
+                                    ></Button>
+                                )}
 
-                        {!editorIsVisible && !todoItem.description && (
-                            <Button
-                                onClick={() => toggleArea()}
-                                label="Add description"
-                                size="medium"
-                                action="description-add"
-                            ></Button>
-                        )}
+                                {editorIsVisible && (
+                                    <Button
+                                        onClick={() => upload()}
+                                        label="Save"
+                                        size="medium"
+                                        action="description"
+                                    ></Button>
+                                )}
+                            </Col>
+                        </Row>
+                        <Row className="mt-5">
+                            <Col md={6}>
+                                <Button
+                                    onClick={() => deleteTodo(todoItem.id)}
+                                    label="Delete"
+                                    size="medium"
+                                    action="delete"
+                                ></Button>
 
-                        {editorIsVisible && (
-                            <Button
-                                onClick={() => upload()}
-                                label="Save"
-                                size="medium"
-                                action="save"
-                            ></Button>
-                        )}
-                        <Button
-                            onClick={() => deleteTodo(todoItem.id)}
-                            label="Delete"
-                            size="medium"
-                            action="delete"
-                        ></Button>
-
-                        {todoItem.status == "open" && (
-                            <Button
-                                onClick={() => updateStatus(todoItem.id)}
-                                label="Done"
-                                size="medium"
-                                action="done"
-                            ></Button>
-                        )}
+                                {todoItem.status == "open" && (
+                                    <Button
+                                        onClick={() =>
+                                            updateStatus(todoItem.id)
+                                        }
+                                        label="Done"
+                                        size="medium"
+                                        action="done"
+                                    ></Button>
+                                )}
+                            </Col>
+                        </Row>
                     </div>
-                </div>
+                </Container>
             )}
         </>
     );

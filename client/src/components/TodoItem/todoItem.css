@@ -1,3 +1,22 @@
+.container__description {
+    min-height: 20vh;
+    /* background-color: #fefbe9;
+    color: rgb(53, 97, 53); */
+    color: #fefbe9;
+    background-color: rgb(24, 58, 29);
+    padding: 1.25rem;
+    letter-spacing: 0.05rem;
+    border-radius: 3px;
+}
 
+.todo-title-detail {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fefbe9;
+    margin-bottom: 0.5rem;
+}
 
-
+.board.form-control {
+    color: #fefbe9 !important;
+    background-color: rgb(24, 58, 29) !important;
+}
