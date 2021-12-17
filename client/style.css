@@ -52,11 +52,11 @@ body {
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif; */
 .bg-color {
-    background: #183a1d;
+    background: #34173a;
     background: linear-gradient(
         120deg,
-        rgb(24, 58, 29) 45%,
-        rgba(24, 58, 29, 0.8) 100%
+        rgb(46, 7, 54) 40%,
+        rgb(76, 34, 85) 100%
     );
     min-height: 100vh;
 }
