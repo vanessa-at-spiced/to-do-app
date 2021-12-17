@@ -1,4 +1,4 @@
 {
-    "baseUrl": "https://just-another-todoapp.herokuapp.com/",
-    "projectId": "axoe6m"
+    "projectId": "axoe6m",
+    "baseUrl": "http://localhost:3000"
 }

@@ -134,10 +134,7 @@ export const App: React.FC<Props> = (props) => {
                 <div className="section--add-todo">
                     <Row>
                         <Col md={6}>
-                            <Form.Group
-                                className="mb-3"
-                                controlId="formBasicEmail"
-                            >
+                            <Form.Group className="mb-3" controlId="text">
                                 <Form.Control
                                     placeholder="Add your todo..."
                                     name="text"
