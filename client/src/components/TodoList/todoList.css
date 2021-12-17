@@ -14,15 +14,15 @@
     color: rgba(24, 58, 29, 0.7);
 }
 
-.done {
+.todo-item.done {
     border: 1px solid rgb(53, 97, 53);
     background-color: #d5ecce;
-    color: white;
+    opacity: 0.7;
 }
 
 .open {
     background-color: #fefbe9;
-    border: 3px solid rgb(250, 187, 81);
+    border: 1px solid #f6c453;
     color: rgb(62, 142, 126);
 }
 

@@ -9,11 +9,21 @@ body {
 }
 
 .nav-link.logo {
+    font-family: "Poppins", sans-serif;
+
     color: #f6c453 !important;
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-weight: 800;
     font-style: italic;
+}
+.nav-link.logo > .logo-small {
+    font-family: "Poppins", sans-serif;
+    color: #f6c453 !important;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    /* font-style: italic; */
 }
 
 .nav-link.logout {

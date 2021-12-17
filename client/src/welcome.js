@@ -18,7 +18,7 @@ export default function Welcome() {
                                 to="/"
                                 as={NavLink}
                                 className="active logo"
-                            >MYL
+                            >MYL<span className='logo-small'>ist</span>
                             </Nav.Link>
                         </Navbar.Brand>
 

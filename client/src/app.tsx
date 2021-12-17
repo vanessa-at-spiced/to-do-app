@@ -22,7 +22,7 @@ export default function App(props: UserId) {
                                     as={NavLink}
                                     className="active logo"
                                 >
-                                    MYL
+                                    MYL<span className="logo-small">ist</span>
                                 </Nav.Link>
                             </Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
