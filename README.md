@@ -5,6 +5,10 @@
 A one week project to get some experience in developing react components with **typeScript** and with the concept of **testing**. Testing includes end-to-end tests with Cypress, and some unit-tests with React Testing Library. 
 The App is deployed on heroku via **automated deployment** from github, depending on successfully pass the **github actions** on every push.
 
+Users can register and/or sign in. They can add/delete their todos on a list. On detail view they may add a description to the todo.They can mark todos as done. Todos are sorted by date.
+
+
+
 ## Stack
 
 TypeScript/React, Node.js/Express, PostgresSQL, React Testing Library, Cypress, github actions
