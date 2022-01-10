@@ -24,7 +24,7 @@ To fork and work with this project follow these steps:
 
 2. Go inside the directory
 
-   -   `cd `
+   -   `cd to-do-app`
 
 3. Install dependencies
 
