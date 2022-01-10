@@ -33,3 +33,9 @@ To fork and work with this project follow these steps:
 4. Start development server
 
     -   `npm run dev`
+
+
+## To Do
+   - refactor to smaler components
+   - improve storybook integration
+   - write more tests
