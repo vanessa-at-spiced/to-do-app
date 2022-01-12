@@ -11,7 +11,7 @@ Users can register and/or sign in. They can add/delete their todos on a list. On
 
 ## Stack
 
-TypeScript/React, Node.js/Express, PostgresSQL, React Testing Library, Cypress, github actions
+[![React Badge](https://img.shields.io/badge/-React-61DAFB?style=flat&labelColor=302d2d&logo=react&logoColor=61DAFB)](#)  [![Typescript Badge](https://img.shields.io/badge/-Typescript-3178C6?flat&labelColor=302d2d&logo=typescript&logoColor=3178C6)](#) [![Nodejs Badge](https://img.shields.io/badge/-Nodejs-3C873A?style=flat&labelColor=302d2d&logo=node.js&logoColor=3C873A)](#) [![Express Badge](https://img.shields.io/badge/-Express-000000?style=flat&labelColor=f7efef&logo=express&logoColor=000000)](#) [![PostgreSQL Badge](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&labelColor=f7efef&logo=postgreSQL&logoColor=4169E1)](#) [![Cypress Badge](https://img.shields.io/badge/-cypress-17202C?style=flat&labelColor=f7efef&logo=cypress&logoColor=17202C)](#) [![GithubActions Badge](https://img.shields.io/badge/-gitHub_actions-2088FF?style=flat&labelColor=302d2d&logo=githubactions&logoColor=2088FF)](#) 
 
 
 ## Demo
