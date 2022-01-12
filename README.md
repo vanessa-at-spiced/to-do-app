@@ -2,7 +2,7 @@
 
 
 #  Todo-App
-A one week project to get some experience in developing react components with **typeScript** and with the concept of **testing**. Testing includes end-to-end tests with Cypress, and some unit-tests with React Testing Library. 
+A one week project to get more experience in developing react components with **typeScript** and with the concept of **testing**. Testing includes end-to-end tests with Cypress, and some unit-tests with React Testing Library. 
 The App is deployed on heroku via **automated deployment** from github, depending on successfully pass the **github actions** on every push.
 
 The features include:
