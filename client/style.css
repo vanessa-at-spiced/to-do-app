@@ -11,7 +11,7 @@ body {
 .nav-link.logo {
     font-family: "Poppins", sans-serif;
 
-    color: #f6c453 !important;
+    color: black !important;
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-weight: 800;
@@ -19,7 +19,7 @@ body {
 }
 .nav-link.logo > .logo-small {
     font-family: "Poppins", sans-serif;
-    color: #f6c453 !important;
+    color: black !important;
     font-size: 1rem;
     letter-spacing: 0.1rem;
     font-weight: 400;
@@ -27,16 +27,16 @@ body {
 }
 
 .nav-link.logout {
-    color: #f6c453 !important;
+    color: black !important;
     margin-left: auto;
 }
 .navbar {
-    border-bottom: #f6c453 1px solid;
+    border-bottom: black 1px solid;
 }
 
 .navbar-dark .navbar-toggler {
-    color: #f6c453 !important;
-    border-color: #f6c453 !important;
+    color: black !important;
+    border-color: black !important;
 }
 
 .h3-welcome {
@@ -46,24 +46,24 @@ body {
     font-size: 3rem;
     margin: 3rem 0;
     text-transform: uppercase;
-    color: #f6c453;
+    color: black;
 }
 
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Poppins', sans-serif; */
 .bg-color {
-    background: #34173a;
-    background: linear-gradient(
+    background: white;
+    /* background: linear-gradient(
         120deg,
         rgb(46, 7, 54) 40%,
         rgb(76, 34, 85) 100%
-    );
+    ); */
     min-height: 100vh;
 }
 
 .form-label {
     margin-bottom: 0.5rem;
-    color: #f6c453;
+    color: black;
 }
 
 .text-small {
